@@ -39,13 +39,13 @@ export default function ContactPage() {
 
       {/* Content */}
       <div
-        style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 24px' }}
+        style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 20px' }}
       >
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '80px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '48px',
             alignItems: 'start',
           }}
         >

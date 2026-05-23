@@ -35,3 +35,17 @@ h4 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
 }
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  .show-mobile {
+    display: flex !important;
+  }
+}
