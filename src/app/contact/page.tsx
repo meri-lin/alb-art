@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import UploadForm from '@/components/UploadForm';
 
 export default function ContactPage() {
   return (
@@ -301,7 +302,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
+      <UploadForm />
       <Footer />
     </main>
   );
