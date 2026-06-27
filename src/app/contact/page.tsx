@@ -1,8 +1,52 @@
+'use client';
+
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import UploadForm from '@/components/UploadForm';
 
 export default function ContactPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async () => {
+    if (!name || !email || !message) {
+      setError('Ju lutem plotësoni të gjitha fushat.');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+
+    try {
+      await emailjs.send(
+        'service_jh66wnq',
+        'template_paieipo',
+        {
+          from_name: name,
+          from_email: email,
+          message: message,
+          image_url: 'Pa foto (mesazh nga faqja Kontakt)',
+        },
+        'vvngyOGIalTqzfONq'
+      );
+
+      setSuccess(true);
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (err) {
+      setError('Ndodhi një gabim. Ju lutem provoni përsëri.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main>
       <Navbar />
@@ -213,6 +257,8 @@ export default function ContactPage() {
                 </label>
                 <input
                   type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder="Emri juaj"
                   style={{
                     width: '100%',
@@ -223,6 +269,7 @@ export default function ContactPage() {
                     fontFamily: 'Jost, sans-serif',
                     color: '#1C1C1C',
                     backgroundColor: '#FAFAFA',
+                    boxSizing: 'border-box',
                   }}
                 />
               </div>
@@ -241,6 +288,8 @@ export default function ContactPage() {
                 </label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="email@juaj.com"
                   style={{
                     width: '100%',
@@ -251,6 +300,7 @@ export default function ContactPage() {
                     fontFamily: 'Jost, sans-serif',
                     color: '#1C1C1C',
                     backgroundColor: '#FAFAFA',
+                    boxSizing: 'border-box',
                   }}
                 />
               </div>
@@ -268,6 +318,8 @@ export default function ContactPage() {
                   Mesazhi
                 </label>
                 <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Si mund t'ju ndihmojmë?"
                   rows={5}
                   style={{
@@ -280,23 +332,40 @@ export default function ContactPage() {
                     color: '#1C1C1C',
                     backgroundColor: '#FAFAFA',
                     resize: 'none',
+                    boxSizing: 'border-box',
                   }}
                 />
               </div>
+
+              {/* Error */}
+              {error && (
+                <p style={{ color: 'red', fontSize: '13px' }}>{error}</p>
+              )}
+
+              {/* Success */}
+              {success && (
+                <p style={{ color: 'green', fontSize: '13px' }}>
+                  ✓ Mesazhi u dërgua me sukses! Do t'ju kontaktojmë së shpejti.
+                </p>
+              )}
+
               <button
+                onClick={handleSubmit}
+                disabled={loading}
                 style={{
-                  backgroundColor: '#C9A96E',
+                  backgroundColor: loading ? '#8C8C8C' : '#C9A96E',
                   color: 'white',
                   padding: '16px 32px',
                   border: 'none',
                   letterSpacing: '0.3em',
                   textTransform: 'uppercase',
                   fontSize: '12px',
-                  cursor: 'pointer',
+                  cursor: loading ? 'not-allowed' : 'pointer',
                   width: '100%',
+                  fontFamily: 'Jost, sans-serif',
                 }}
               >
-                Dërgo Mesazhin
+                {loading ? 'Duke dërguar...' : 'Dërgo Mesazhin'}
               </button>
             </div>
           </div>
