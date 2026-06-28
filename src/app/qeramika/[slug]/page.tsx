@@ -48,6 +48,37 @@ export default async function ProductPage({
 
   return (
     <main className="bg-[#F5F2ED] min-h-screen pt-32 pb-24 px-6">
+      <style>{`
+        .product-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 24px;
+          margin-top: 40px;
+          margin-bottom: 48px;
+        }
+        .product-title {
+          font-size: 1.875rem;
+        }
+        .product-spec-value {
+          font-size: 1.125rem;
+        }
+        @media (max-width: 767px) {
+          main {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+          .product-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+          .product-title {
+            font-size: 1.5rem;
+          }
+          .product-spec-value {
+            font-size: 0.95rem;
+          }
+        }
+      `}</style>
       <div className="max-w-6xl mx-auto">
         {/* Breadcrumb */}
         <Link
@@ -57,14 +88,14 @@ export default async function ProductPage({
           ← Materialet
         </Link>
 
-        {/* 3 KOLONA: Titulli | Foto | Detajet */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] gap-10 mt-10 mb-20 items-start">
-          {/* Kolona 1: Titulli */}
-          <div className="md:pt-4">
+        {/* Grid me 3 kolona (desktop) / 1 kolonë (mobile) - CSS standarde, pa Tailwind */}
+        <div className="product-grid">
+          {/* Rreshti 1, Kolona 1: Titulli */}
+          <div>
             <p className="text-[#C9A96E] tracking-[0.4em] uppercase text-sm mb-3">
               {product.collection}
             </p>
-            <h1 className="font-serif text-3xl md:text-4xl text-[#1C1C1C] leading-tight">
+            <h1 className="product-title font-serif text-[#1C1C1C] leading-tight">
               {product.name}
             </h1>
 
@@ -76,8 +107,8 @@ export default async function ProductPage({
             </Link>
           </div>
 
-          {/* Kolona 2: Foto - madhësi e kontrolluar, katrore/portret */}
-          <div className="w-full max-w-[420px] mx-auto">
+          {/* Rreshti 1, Kolona 2: Foto kryesore (URL e jashtme) */}
+          <div style={{ width: '100%', maxWidth: '320px', margin: '0 auto' }}>
             <div className="relative w-full aspect-[4/5] overflow-hidden bg-white shadow-sm">
               <img
                 src={product.image}
@@ -87,8 +118,34 @@ export default async function ProductPage({
             </div>
           </div>
 
-          {/* Kolona 3: Detajet teknike */}
-          <div className="space-y-8 md:pt-4">
+          {/* Rreshti 1, Kolona 3: Foto detaji #1 (nëse ekziston) */}
+          {product.detailImages && product.detailImages[0] && (
+            <div style={{ width: '100%', maxWidth: '320px', margin: '0 auto' }}>
+              <div className="relative w-full aspect-[4/5] overflow-hidden bg-white shadow-sm">
+                <img
+                  src={product.detailImages[0]}
+                  alt={`${product.name} - detaj teksture 1`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Rreshti 2, Kolona 1: Foto detaji #2 (vetëm nëse ekziston) */}
+          {product.detailImages && product.detailImages[1] && (
+            <div style={{ width: '100%', maxWidth: '320px', margin: '0 auto' }}>
+              <div className="relative w-full aspect-[4/5] overflow-hidden bg-white shadow-sm">
+                <img
+                  src={product.detailImages[1]}
+                  alt={`${product.name} - detaj teksture 2`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Specifikimet teknike - mbushin pjesën tjetër të rreshtit 2 */}
+          <div className="space-y-6">
             <SpecRow label="Formati / Size" value={size} />
             <SpecRow
               label="Spesori / Thicknesses"
@@ -158,7 +215,7 @@ function SpecRow({ label, value }: { label: string; value: string }) {
       <p className="text-[#8C8C8C] text-xs tracking-widest uppercase mb-2">
         {label}
       </p>
-      <p className="font-serif text-lg text-[#1C1C1C]">{value}</p>
+      <p className="product-spec-value font-serif text-[#1C1C1C]">{value}</p>
     </div>
   );
 }
