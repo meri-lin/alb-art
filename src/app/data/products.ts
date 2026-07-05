@@ -94,6 +94,10 @@ export const products: Product[] = [
     name: 'Calacatta White',
     collection: 'Neolith',
     image: '/images/main/calaccata_white.webp',
+    detailImages: [
+      '/images/products/calacatta_white1.webp',
+      '/images/products/calacatta_white2.webp',
+    ],
   },
   {
     slug: 'statuario-venato',

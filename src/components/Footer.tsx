@@ -9,16 +9,36 @@ export default function Footer() {
         padding: '64px 24px',
       }}
     >
+      <style>{`
+        .footer-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 48px;
+          margin-bottom: 48px;
+        }
+        .footer-bottom {
+          border-top: 1px solid rgba(255,255,255,0.1);
+          padding-top: 32px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        @media (max-width: 767px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* 3 kolonat */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '48px',
-            marginBottom: '48px',
-          }}
-        >
+        <div className="footer-grid">
           {/* Kolona 1 - Logo */}
           <div>
             <h3
@@ -169,15 +189,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom line */}
-        <div
-          style={{
-            borderTop: '1px solid rgba(255,255,255,0.1)',
-            paddingTop: '32px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <div className="footer-bottom">
           <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px' }}>
             2025 Alb Art. Te gjitha te drejtat e rezervuara.
           </p>

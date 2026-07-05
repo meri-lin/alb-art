@@ -134,6 +134,34 @@ export default function Projects() {
 
   return (
     <section style={{ padding: '96px 24px', backgroundColor: '#F5F2ED' }}>
+      <style>{`
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
+        }
+        .project-img {
+          position: relative;
+          height: 280px;
+          overflow: hidden;
+        }
+        @media (max-width: 767px) {
+          .projects-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          }
+          .project-img {
+            height: 180px;
+          }
+          .projects-section {
+            padding: 60px 16px !important;
+          }
+          .projects-h2 {
+            font-size: 32px !important;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Header */}
         <motion.div
@@ -155,6 +183,7 @@ export default function Projects() {
             Punimet Tona
           </p>
           <h2
+            className="projects-h2"
             style={{
               fontFamily: 'Cormorant Garamond, serif',
               fontSize: '48px',
@@ -167,13 +196,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '24px',
-          }}
-        >
+        <div className="projects-grid">
           {visible.map((project, i) => (
             <motion.div
               key={i}
@@ -184,13 +207,7 @@ export default function Projects() {
               style={{ cursor: 'pointer', overflow: 'hidden' }}
               className="group"
             >
-              <div
-                style={{
-                  position: 'relative',
-                  height: '280px',
-                  overflow: 'hidden',
-                }}
-              >
+              <div className="project-img">
                 <img
                   src={project.image}
                   alt={project.title}

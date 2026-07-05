@@ -47,7 +47,7 @@ export default async function ProductPage({
   const bookmatchImages = product.bookmatchImages ?? [];
 
   return (
-    <main className="bg-[#F5F2ED] min-h-screen pt-32 pb-24 px-6">
+    <main className="bg-[#FFF] min-h-screen pt-32 pb-24 px-6">
       <style>{`
         .product-grid {
           display: grid;
@@ -107,7 +107,7 @@ export default async function ProductPage({
             </Link>
           </div>
 
-          {/* Rreshti 1, Kolona 2: Foto kryesore (URL e jashtme) */}
+          {/* Rreshti 1, Kolona 2: Foto kryesore () */}
           <div style={{ width: '100%', maxWidth: '320px', margin: '0 auto' }}>
             <div className="relative w-full aspect-[4/5] overflow-hidden bg-white shadow-sm">
               <img

@@ -4,6 +4,50 @@ import Footer from '@/components/Footer';
 export default function AboutPage() {
   return (
     <main>
+      <style>{`
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: center;
+        }
+        .about-img {
+          position: relative;
+          height: 500px;
+          overflow: hidden;
+        }
+        .stats-grid {
+          max-width: 1280px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 48px;
+          text-align: center;
+        }
+        @media (max-width: 767px) {
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .about-img {
+            height: 300px;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+          .about-section {
+            padding: 60px 24px !important;
+          }
+          .about-h2 {
+            font-size: 32px !important;
+          }
+          .about-hero-h1 {
+            font-size: 36px !important;
+          }
+        }
+      `}</style>
+
       <Navbar />
 
       {/* Hero */}
@@ -26,6 +70,7 @@ export default function AboutPage() {
           Historia Jonë
         </p>
         <h1
+          className="about-hero-h1"
           style={{
             fontFamily: 'Cormorant Garamond, serif',
             fontSize: '56px',
@@ -39,16 +84,10 @@ export default function AboutPage() {
 
       {/* Seksioni 1 */}
       <div
+        className="about-section"
         style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 24px' }}
       >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '80px',
-            alignItems: 'center',
-          }}
-        >
+        <div className="about-grid">
           <div>
             <p
               style={{
@@ -62,6 +101,7 @@ export default function AboutPage() {
               Kush Jemi
             </p>
             <h2
+              className="about-h2"
               style={{
                 fontFamily: 'Cormorant Garamond, serif',
                 fontSize: '42px',
@@ -99,15 +139,9 @@ export default function AboutPage() {
               lartë me dizajnin bashkëkohor.
             </p>
           </div>
-          <div
-            style={{
-              position: 'relative',
-              height: '500px',
-              overflow: 'hidden',
-            }}
-          >
+          <div className="about-img">
             <img
-              src="https://art-tradite.com/wp-content/uploads/2025/01/Art-Tradite-4.jpeg"
+              src="/images/about/abt_img1.webp"
               alt="Rreth Nesh"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -117,16 +151,7 @@ export default function AboutPage() {
 
       {/* Stats */}
       <div style={{ backgroundColor: '#1C1C1C', padding: '80px 24px' }}>
-        <div
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '48px',
-            textAlign: 'center',
-          }}
-        >
+        <div className="stats-grid">
           {[
             { number: '500+', label: 'Projekte të Realizuara' },
             { number: '40+', label: 'Materiale Neolith' },
@@ -161,25 +186,13 @@ export default function AboutPage() {
 
       {/* Seksioni 2 */}
       <div
+        className="about-section"
         style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 24px' }}
       >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '80px',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              position: 'relative',
-              height: '500px',
-              overflow: 'hidden',
-            }}
-          >
+        <div className="about-grid">
+          <div className="about-img">
             <img
-              src="https://art-tradite.com/wp-content/uploads/2025/01/Art-Tradite-8.jpeg"
+              src="/images/about/abt_img2.webp"
               alt="Showroom"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -197,6 +210,7 @@ export default function AboutPage() {
               Showroom
             </p>
             <h2
+              className="about-h2"
               style={{
                 fontFamily: 'Cormorant Garamond, serif',
                 fontSize: '42px',
