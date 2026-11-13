@@ -82,7 +82,7 @@ export default function Hero() {
           transition={loopTransition(0.4)}
           style={{
             color: 'rgba(255,255,255,0.9)',
-            fontWeight: 600,
+            fontWeight: 100,
             fontSize: 'clamp(16px, min(1.9vw, 2.8vh), 28px)',
             lineHeight: 1.6,
             letterSpacing: '0.02em',
