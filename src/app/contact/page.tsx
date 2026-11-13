@@ -197,7 +197,7 @@ export default function ContactPage() {
                     fontWeight: 300,
                   }}
                 >
-                  info@albart.al
+                  albarttirana@gmail.com
                 </p>
               </div>
               <div>
@@ -219,7 +219,7 @@ export default function ContactPage() {
                     fontWeight: 300,
                   }}
                 >
-                  E Hënë - E Shtunë: 09:00 - 18:00
+                  E Hënë - E Shtunë: 09:00 - 21:00
                 </p>
               </div>
             </div>

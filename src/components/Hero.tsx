@@ -4,6 +4,18 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const DURATION = 10;
+
+const loopAnimate = { opacity: [0, 1, 1, 0], y: [-80, 0, 0, 60] };
+
+const loopTransition = (delay = 0) => ({
+  duration: DURATION,
+  delay,
+  times: [0, 0.15, 0.85, 1],
+  ease: 'easeOut' as const,
+  repeat: Infinity,
+});
+
 export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -26,29 +38,52 @@ export default function Hero() {
 
       <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#C9A96E] tracking-[0.4em] uppercase text-sm mb-6"
+          initial={{ opacity: 0, y: -80 }}
+          animate={loopAnimate}
+          transition={loopTransition(0)}
+          style={{
+            color: '#C9A96E',
+            fontWeight: 100,
+            fontSize: 'clamp(44px, 7.5vw, 112px)',
+            lineHeight: 1.1,
+            maxWidth: '1200px',
+            marginBottom: '56px',
+          }}
         >
-          Qeramikë Luksoze
+          ALB-ART <br />
+          {/* Qeramikë Luksoze */}
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-serif text-5xl md:text-7xl text-white leading-tight mb-8 max-w-4xl"
+          initial={{ opacity: 0, y: -80 }}
+          animate={loopAnimate}
+          transition={loopTransition(0.2)}
+          className="font-serif text-white"
+          style={{
+            fontWeight: 100,
+            fontSize: 'clamp(44px, 7.5vw, 112px)',
+            lineHeight: 1.1,
+            maxWidth: '1200px',
+            marginBottom: '64px',
+          }}
         >
           Arti i Qeramikës <br />
-          <span className="text-[#C9A96E]">në Çdo Detail</span>
+          <span style={{ color: '#C9A96E' }}>në Çdo Detaj</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/80 text-lg max-w-xl mb-12 font-light tracking-wide"
+          initial={{ opacity: 0, y: -80 }}
+          animate={loopAnimate}
+          transition={loopTransition(0.4)}
+          style={{
+            color: 'rgba(255,255,255,0.9)',
+            fontWeight: 100,
+            fontSize: 'clamp(18px, 1.9vw, 28px)',
+            lineHeight: 1.6,
+            letterSpacing: '0.02em',
+            maxWidth: '860px',
+            marginBottom: '72px',
+          }}
         >
           Nga fleta e parë deri në përpunimin final — ofrojmë qeramikë të
           cilësisë së lartë për kuzhinë, banjo dhe ambiente luksoze.
@@ -60,7 +95,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           style={{
             display: 'flex',
-            gap: '24px',
+            gap: '28px',
             flexWrap: 'wrap',
             justifyContent: 'center',
           }}
@@ -70,10 +105,11 @@ export default function Hero() {
             style={{
               backgroundColor: '#C9A96E',
               color: 'white',
-              padding: '16px 40px',
+              fontWeight: 700,
+              padding: '20px 52px',
               letterSpacing: '0.3em',
               textTransform: 'uppercase' as const,
-              fontSize: '12px',
+              fontSize: 'clamp(13px, 1.1vw, 16px)',
               textDecoration: 'none',
               display: 'inline-block',
             }}
@@ -83,12 +119,13 @@ export default function Hero() {
           <Link
             href="/contact"
             style={{
-              border: '1px solid white',
+              border: '2px solid white',
               color: 'white',
-              padding: '16px 40px',
+              fontWeight: 700,
+              padding: '20px 52px',
               letterSpacing: '0.3em',
               textTransform: 'uppercase' as const,
-              fontSize: '12px',
+              fontSize: 'clamp(13px, 1.1vw, 16px)',
               textDecoration: 'none',
               display: 'inline-block',
             }}
@@ -104,7 +141,15 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
       >
-        <span className="text-white/60 text-xs tracking-widest uppercase">
+        <span
+          style={{
+            color: 'rgba(255,255,255,0.7)',
+            fontWeight: 700,
+            fontSize: '14px',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+          }}
+        >
           Scroll
         </span>
         <div className="w-px h-16 bg-white/30 relative overflow-hidden">

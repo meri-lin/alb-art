@@ -156,12 +156,12 @@ export default function Footer() {
                   fontWeight: 300,
                 }}
               >
-                Email: info@albart.al
+                Email: albarttirana@gmail.com
               </li>
             </ul>
             <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
               <a
-                href="#"
+                href="https://www.instagram.com/albarttirana/"
                 style={{
                   color: 'rgba(255,255,255,0.6)',
                   fontSize: '12px',
@@ -173,7 +173,7 @@ export default function Footer() {
                 Instagram
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61592588670406"
                 style={{
                   color: 'rgba(255,255,255,0.6)',
                   fontSize: '12px',

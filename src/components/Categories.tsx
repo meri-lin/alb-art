@@ -12,27 +12,80 @@ export default function Categories() {
   const visible = showAll ? products : products.slice(0, SHOW_INITIAL);
 
   return (
-    <section className="py-24 px-6 bg-[#F5F2ED]">
+    <section
+      style={{
+        backgroundColor: '#F5F2ED',
+        paddingTop: 'clamp(100px, 12vw, 180px)',
+        paddingBottom: '96px',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        overflowX: 'hidden',
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <p className="text-[#C9A96E] tracking-[0.4em] uppercase text-sm mb-4">
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{
+              color: '#C9A96E',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.4em',
+              fontSize: 'clamp(14px, 1.3vw, 18px)',
+              marginBottom: '28px',
+            }}
+          >
             Koleksioni Neolith
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl text-[#1C1C1C] mb-4">
+          </motion.p>
+
+          <motion.h2
+            initial={{ opacity: 0, x: 120 }}
+            animate={{ opacity: [0, 1, 1, 0], x: [120, 0, 0, -60] }}
+            transition={{
+              duration: 3,
+              times: [0, 0.25, 0.8, 1],
+              ease: 'easeOut',
+              repeat: Infinity,
+            }}
+            className="font-serif"
+            style={{
+              color: '#1C1C1C',
+              fontWeight: 700,
+              fontSize: 'clamp(36px, 4.5vw, 64px)',
+              lineHeight: 1.15,
+              marginBottom: '28px',
+            }}
+          >
             Materialet Tona
-          </h2>
-          <p className="text-[#8C8C8C] max-w-xl mx-auto font-light">
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, x: 120 }}
+            animate={{ opacity: [0, 1, 1, 0], x: [120, 0, 0, -60] }}
+            transition={{
+              duration: 3,
+              delay: 0.25,
+              times: [0, 0.25, 0.8, 1],
+              ease: 'easeOut',
+              repeat: Infinity,
+            }}
+            style={{
+              color: '#6B6B6B',
+              fontWeight: 600,
+              fontSize: 'clamp(16px, 1.4vw, 20px)',
+              lineHeight: 1.6,
+              maxWidth: '640px',
+              margin: '0 auto',
+            }}
+          >
             Çdo material është zgjedhur me kujdes për cilësinë, qëndrueshmërinë
             dhe elegancën e tij.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Grid */}
         <div
@@ -77,11 +130,27 @@ export default function Categories() {
                   />
                   <div className="absolute inset-0 bg-[#1C1C1C]/0 group-hover:bg-[#1C1C1C]/40 transition-all duration-500" />
                 </div>
-                <div className="py-3 px-2">
-                  <h3 className="font-serif text-base text-[#1C1C1C]">
+                <div style={{ padding: '16px 12px' }}>
+                  <h3
+                    className="font-serif"
+                    style={{
+                      color: '#1C1C1C',
+                      fontWeight: 700,
+                      fontSize: '18px',
+                    }}
+                  >
                     {product.name}
                   </h3>
-                  <p className="text-[#C9A96E] text-xs tracking-widest uppercase mt-1">
+                  <p
+                    style={{
+                      color: '#C9A96E',
+                      fontWeight: 700,
+                      fontSize: '12px',
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      marginTop: '6px',
+                    }}
+                  >
                     {product.collection}
                   </p>
                 </div>
@@ -96,11 +165,22 @@ export default function Categories() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            style={{ textAlign: 'center', marginTop: '64px' }}
           >
             <button
               onClick={() => setShowAll(true)}
-              className="border border-[#1C1C1C] text-[#1C1C1C] px-12 py-4 tracking-widest uppercase text-sm hover:bg-[#1C1C1C] hover:text-white transition-all duration-300"
+              style={{
+                border: '2px solid #1C1C1C',
+                color: '#1C1C1C',
+                fontWeight: 700,
+                padding: '18px 52px',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                background: 'transparent',
+                cursor: 'pointer',
+              }}
+              className="hover:bg-[#1C1C1C] hover:text-white transition-all duration-300"
             >
               Shiko të Gjitha ({products.length})
             </button>
